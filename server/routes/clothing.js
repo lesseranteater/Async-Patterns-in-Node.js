@@ -7,7 +7,7 @@ const router = express.Router();
 router.route("/")
   .get(function(req, res) {
 
-    let rawData = fs.readFile(datafile, "utf8", (err, data) => {
+    fs.readFile(datafile, "utf8", (err, data) => {
       if (err) {
         console.log(err);
       } else {
