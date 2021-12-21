@@ -20,14 +20,12 @@ router.route("/")
     console.log("Doing more work");
   });
 
-function getClothingData() {
+async function getClothingData() {
 
-  let clothingPromise = fsPromises.readFile(datafile, "utf8")
-    .then(data => JSON.parse(data));
-
-  console.log(clothingPromise);
-
-  return clothingPromise;
+  let rawData = await fsPromises.readFile(datafile, "utf8") // we can await only functions that return a promise
+  let clothingData = JSON.parse(rawData);
+  console.log(clothingData);
+  return clothingData;
 
   // return new Promise((resolve, reject) => {
   //   fs.readFile(datafile, "utf8", (err, data) => {
