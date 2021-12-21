@@ -9,7 +9,9 @@ router.route("/")
 
     let rawData = fs.readFileSync(datafile, "utf8");
     let clothingData = JSON.parse(rawData);
+    console.log("Returning clothing data");
     res.send(clothingData);
+    console.log("Doing more work");
   });
 
 module.exports = router;
