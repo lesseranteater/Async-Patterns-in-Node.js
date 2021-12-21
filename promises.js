@@ -23,3 +23,12 @@ MethodThatReturnsPromise()
   .then(data => console.log(data)) // if the promise is resolved
   .catch(error => console.log(error)) // if the promise is reject
   .finally(() => console.log("All done!")); // called in both cases
+
+async function getData(){
+  let rawData = await MethodThatReturnsPromise(); // automatically unwinds the data from the Promise
+  return JSON.parse(rawData);
+}
+
+getData()
+.then(data => console.log(data))
+.catch(error => console.log(error));
