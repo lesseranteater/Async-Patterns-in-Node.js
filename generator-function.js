@@ -1,11 +1,11 @@
 function* generatorFunction() {
-    console.log("Start of generator function");
-    let x = 5;
-    yield x; // returns the value and pauses the function until it is explicitly resumed
+  console.log("Start of generator function");
+  let x = 5;
+  yield x; // returns the value and pauses the function until it is explicitly resumed
 
-    x++;
-    let y = yield x; // y is assigned the value passed to next()
-    return x + y;
+  x++;
+  let y = yield x; // y is assigned the value passed to next()
+  return x + y;
 }
 
 let iterator = generatorFunction();

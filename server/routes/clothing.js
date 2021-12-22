@@ -4,7 +4,7 @@ const fsPromises = require("fs").promises;
 const datafile = "server/data/clothing.json";
 const router = express.Router();
 
-module.exports = function (monitor) {
+module.exports = function(monitor) {
   let dataMonitor = monitor;
 
   dataMonitor.on("dataAdded", (item) => {
@@ -14,7 +14,7 @@ module.exports = function (monitor) {
   /* GET all clothing */
   router
     .route("/")
-    .get(async function (req, res) {
+    .get(async function(req, res) {
       try {
         let data = await getClothingData();
         res.send(data);
@@ -23,7 +23,7 @@ module.exports = function (monitor) {
       }
     })
 
-    .post(async function (req, res) {
+    .post(async function(req, res) {
       try {
         let data = await getClothingData();
 
@@ -32,7 +32,7 @@ module.exports = function (monitor) {
         let newClothingItem = {
           clothingID: nextID,
           itemName: req.body.itemName,
-          price: req.body.price,
+          price: req.body.price
         };
 
         data.push(newClothingItem);
@@ -59,7 +59,7 @@ module.exports = function (monitor) {
   function getNextAvailableID(allClothingData) {
     let maxID = 0;
 
-    allClothingData.forEach(function (element, index, array) {
+    allClothingData.forEach(function(element, index, array) {
       if (element.clothingID > maxID) {
         maxID = element.clothingID;
       }
